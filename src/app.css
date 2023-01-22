@@ -1,0 +1,15 @@
+.app{
+    height: 100vh;
+    display: flex;
+    background-color: #020230;
+    color: white;
+}
+
+.main{
+    width: 75%;
+    background: url("./assets/bg.jpg");
+}
+
+.pyramid{
+    width: 25%;
+}
