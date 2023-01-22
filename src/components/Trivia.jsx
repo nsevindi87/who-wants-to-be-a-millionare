@@ -1,14 +1,30 @@
-import React from 'react'
+import React from 'react';
+import {useState, useEffect} from "react"
 
-function Trivia() {
+function Trivia({data,setTimeOut,questionNumber,setQuestionNumber}){
+const  [question, setQuestion] = useState(null)
+const  [selectedAnswer, setSelectedAnswer] = useState(null)
+const  [className, setClassName] = useState("answer")
+
+useEffect(()=>{
+  setQuestion(data[questionNumber-1])
+},[data,questionNumber])
+
+const handleClick = (a) => {
+  setSelectedAnswer(a)
+  setClassName("answer active")
+  setTimeout(()=>{
+    setClassName(a.correct ? "answer correct" : "answer wrong")
+  },3000)
+}
+
   return (
     <div className='trivia'>
-      <div className="question">What`s the best YouTube channel?</div>
+      <div className="question">{question?.question}</div>
       <div className="answers">
-        <div className="answer correct">Martin Dudler</div>
-        <div className="answer">Martin Dudler</div>
-        <div className="answer">Martin Dudler</div>
-        <div className="answer">Martin Dudler</div>
+        {question?.answers.map((a)=>(
+          <div className={selectedAnswer=== a ? className:"answer"} onClick={()=>handleClick(a)}>{a.text}</div>
+        ))}
       </div>
     </div>
   )

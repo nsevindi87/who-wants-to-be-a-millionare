@@ -1,7 +1,7 @@
 import "./app.css"
 import { useState } from "react";
 import { moneyPyramid } from "./moneyPyramid";
-import { data } from "./quuestionData";
+import { data } from "./questionsData";
 import Trivia from './components/Trivia';
 
 function App() {
